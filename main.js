@@ -3,6 +3,7 @@
 
 const apiKey = "aa351def03ae96ae4d0d783e366257c0";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
+const defaultCity = "Kansas City";
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
@@ -18,12 +19,18 @@ async function checkWeather(city) {
         document.querySelector(".wind-info").style.display = "none";
     } else {
         const data = await response.json();
-    
+        
+        console.log(data);
 
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°F";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + " mph";
+    
+    document.querySelector(".visibility-range").innerHTML = data.visibility;
+    //const visibilityInMeters = data.visibility; 
+    //const visibilityInKm = visibilityInMeters / 1000; 
+    //document.querySelector(".visibility-range").innerHTML = visibilityInKm + " km";
 
     if(data.weather[0].main == "Clouds") {
         weatherIcon.src = "images/clouds.png";
@@ -58,5 +65,5 @@ searchBtn.addEventListener("click", ()=> {
     checkWeather(searchBox.value);
 })
 
-checkWeather(city);
+checkWeather(defaultCity);
 

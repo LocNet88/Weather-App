@@ -207,7 +207,7 @@ body, html {
     font-weight:400;
 }
 
-.analytics-box01, .analytics-box02, .analytics-box03{
+.analytics-box01, .analytics-box02, .analytics-box03, .analytics-box1, .analytics-box2, .analytics-box3{
     background:var(--primary-gradient);
     border-radius:10px;
 }
@@ -222,4 +222,10 @@ body, html {
     margin-top:-15px;
     font-size:14px;
     display:none;
+}
+
+.analytics-box1{
+    display:flex;
+    justify-content: center;
+    text-align: center;
 }
