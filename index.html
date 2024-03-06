@@ -1,103 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Weather App</title> <!-- TODO: update page title -->
-    <meta name="description" content=""> <!-- TODO: update meta description -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="Home - Page"> <!-- TODO: update OG Title --> 
-    <meta property="og:url" content="">  <!-- TODO: update OG URL --> 
-    <meta property="og:image" content="/path/to/image">  <!-- TODO: update OG Image --> 
-    <meta property="og:type" content="">
-    <link rel="apple-touch-icon" href="icon.png">
-    
-    <link rel="icon" href="/favicon.ico"> <!-- TODO: Add favicon.ico file to project -->
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <meta name="theme-color" content="#fafafa">
-</head>
-<body>
-   
+  <head>
+    <meta charset="utf-8" />
+    <title>Weather App</title>
+    <!-- TODO: update page title -->
+    <meta name="description" content="" />
+    <!-- TODO: update meta description -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="Home - Page" />
+    <!-- TODO: update OG Title -->
+    <meta property="og:url" content="" />
+    <!-- TODO: update OG URL -->
+    <meta property="og:image" content="/path/to/image" />
+    <!-- TODO: update OG Image -->
+    <meta property="og:type" content="" />
+    <link rel="apple-touch-icon" href="icon.png" />
 
+    <link rel="icon" href="/favicon.ico" />
+    <!-- TODO: Add favicon.ico file to project -->
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="theme-color" content="#fafafa" />
+  </head>
+  <body>
     <div class="grid-container">
-
-        <div class="card">
-            <div class="search">
-                <input type="text" placeholder="enter city name" spellcheck="false">
-                <button><img src="images/search.png" alt="#"> </button>
-            </div>
-
-            <div class="error">
-                <p>Invalid city name</p>
-            </div>
-
-            <div class="weather">
-                <div class="current-forecast">
-                <img src="images/rain.png" class="weather-icon current-card-img" alt="#">
-                <h1 class="temp">53°F</h1>
-                <h2 class="city">Kansas City</h2>
-                </div>
-
-                
-            </div>
+      <div class="card">
+        <div class="search">
+          <input type="text" placeholder="enter city name" spellcheck="false" />
+          <button><img src="images/search.png" alt="#" /></button>
         </div>
 
-
-        <div class="day-container">
-            <div class="days mon"></div>
-            <div class="days tues"></div>
-            <div class="days wed"></div>
-            <div class="days thur"></div>
-            <div class="days fri"></div>
-            <div class="days sat"></div>
-            <div class="days sun"></div>
+        <div class="error">
+          <p>Invalid city name</p>
         </div>
 
-        <div class="hour-container">
-            <div class="hours hr-1"  id="current-hour"></div>
-            <div class="hours hr-2"></div>
-            <div class="hours hr-3"></div>
-            <div class="hours hr-4"></div>
-            <div class="hours hr-5"></div>
-            <div class="hours hr-6"></div>
-            <div class="hours hr-7"></div>
-        </div>
-
-
-        <div class="analytics-container-1">
-            <div class="analytics-box01">
-                <div class="humidity-info">
-                    <p class="info-heading">Humidity</p>
-                    <img src="images/humidity.png" class="info-img" alt="#">
-                    <p class="humidity">50%</p>
-                </div>
+        <div class="weather">
+          <div class="current-forecast">
+            <img
+              src="images/rain.png"
+              class="weather-icon current-card-img"
+              alt="#"
+            />
+            <h1 class="temp">53°F</h1>
+            <h2 class="city">Kansas City</h2>
+            <h3 class="feels">Feels like</h3>
+            <p class="feels-text"></p>
+            <div class="hi-lo">
+              <p>High</p><p class="high-temp"><p>°F</p><p>/</p></p>
+              
+              <p>Low</p><p class="low-temp"></p><p>°F</p>
             </div>
-            <div class="analytics-box02">
-                <div class="wind-info">
-                    <p class="info-heading">Wind Speed</p>
-                    <img src="images/wind.png" class="info-img" alt="#">
-                    <p class="wind">15mph</p>
-                </div>
-            </div>
-            <div class="analytics-box03"></div>
+          </div>
         </div>
+      </div>
 
-        <div class="analytics-container-2">
-            <div class="analytics-box1">
-                <div class="visibility-info">
-                    <p class="info-heading">Visibility</p>
-                    <p class="visibility-range">10 km</p>
-                </div>
-            </div>
-            <div class="analytics-box2"></div>
-            <div class="analytics-box3"></div>
+      <div class="day-container">
+        <div class="days mon"></div>
+        <div class="days tues"></div>
+        <div class="days wed"></div>
+        <div class="days thur"></div>
+        <div class="days fri"></div>
+        <div class="days sat"></div>
+        <div class="days sun"></div>
+      </div>
+
+      <div class="hour-container">
+        <div class="hours hr-1" id="current-hour"></div>
+        <div class="hours hr-2"></div>
+        <div class="hours hr-3"></div>
+        <div class="hours hr-4"></div>
+        <div class="hours hr-5"></div>
+        <div class="hours hr-6"></div>
+        <div class="hours hr-7"></div>
+      </div>
+
+      <div class="analytics-container-1">
+        <div class="analytics-box01">
+          <div class="humidity-info">
+            <p class="info-heading">Humidity</p>
+            <img src="images/humidity.png" class="info-img" alt="#" />
+            <p class="humidity">50%</p>
+          </div>
         </div>
+        <div class="analytics-box02">
+          <div class="wind-info">
+            <p class="info-heading">Wind Speed</p>
+            <img src="images/wind.png" class="info-img" alt="#" />
+            <p class="wind">15mph</p>
+          </div>
+        </div>
+        <div class="analytics-box03"></div>
+      </div>
 
-
+      <div class="analytics-container-2">
+        <div class="analytics-box1">
+          <div class="visibility-info">
+            <p class="info-heading">Visibility</p>
+            <p class="visibility-range">10 km</p>
+          </div>
+        </div>
+        <div class="analytics-box2">
+            <div class="pressure-info">
+                <p class="pressure-heading">Pressure</p>
+                <p class="pressure-text"></p>
+            </div>
+        </div>
+        <div class="analytics-box3"></div>
+      </div>
     </div>
-    <script src="main.js" ></script>
-</body>
+    <script src="main.js"></script>
+  </body>
 </html>
