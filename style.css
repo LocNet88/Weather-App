@@ -250,3 +250,41 @@ html {
   display: flex;
   gap: 4px;
 }
+
+/*===========================SUNRISE AND SUNSET BOX=============================*/
+.analytics-box03 {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.arch-img {
+  height: 100px;
+  width: 175px;
+  margin-bottom: -40px;
+}
+
+.sun-div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.sun-div2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -30px;
+}
+
+.arch-container {
+  position: relative;
+}
+
+.sun-img {
+  position: absolute;
+  width: 80px; /* Adjust the size of the sun image */
+  height: 80px; /* Adjust the size of the sun image */
+  top: 0; /* Initial position */
+  left: 0; /* Initial position */
+}

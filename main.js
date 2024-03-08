@@ -33,15 +33,54 @@ async function checkWeather(city) {
       data.main.temp_min
     );
 
+    // Assuming data.sys.sunrise and data.sys.sunset are Unix timestamps
+    const sunriseTimestamp = data.sys.sunrise;
+    const sunsetTimestamp = data.sys.sunset;
+
+    // Convert Unix timestamps to milliseconds by multiplying by 1000
+    const sunriseTime = new Date(sunriseTimestamp * 1000);
+    const sunsetTime = new Date(sunsetTimestamp * 1000);
+
+    // Get hours, minutes, and seconds
+    const sunriseHours = sunriseTime.getHours().toString().padStart(2, "0");
+    const sunriseMinutes = sunriseTime.getMinutes().toString().padStart(2, "0");
+    const sunriseSeconds = sunriseTime.getSeconds().toString().padStart(2, "0");
+
+    const sunsetHours = sunsetTime.getHours().toString().padStart(2, "0");
+    const sunsetMinutes = sunsetTime.getMinutes().toString().padStart(2, "0");
+    const sunsetSeconds = sunsetTime.getSeconds().toString().padStart(2, "0");
+
+    // Construct formatted time strings
+    const formattedSunriseTime = `${sunriseHours}:${sunriseMinutes}:${sunriseSeconds}`;
+    const formattedSunsetTime = `${sunsetHours}:${sunsetMinutes}:${sunsetSeconds}`;
+    document.querySelector(".sunrise-text").innerHTML = formattedSunriseTime;
+    document.querySelector(".sunset-text").innerHTML = formattedSunsetTime;
+
+    // Calculate the percentage of the day passed since sunrise
+    const now = Date.now();
+    const percentageOfDay =
+      (now - sunriseTimestamp * 1000) /
+      (sunsetTimestamp * 1000 - sunriseTimestamp * 1000);
+
+    // Get the arch element and its width
+    const arch = document.querySelector(".arch");
+    const archWidth = arch.clientWidth;
+
+    // Calculate the horizontal position of the sun based on the percentage of the day passed
+    const sunPosition = percentageOfDay * archWidth;
+
+    // Get the sun element
+    const sun = document.querySelector(".sun-img");
+
+    // Set the left position of the sun element
+    sun.style.left = sunPosition + "px";
+
     const pressureInteger = data.main.pressure;
     const pressureDecimal = (pressureInteger * 0.02953).toFixed(2);
     document.querySelector(".pressure-text").innerHTML =
       pressureDecimal + " in";
 
     document.querySelector(".visibility-range").innerHTML = data.visibility;
-    //const visibilityInMeters = data.visibility;
-    //const visibilityInKm = visibilityInMeters / 1000;
-    //document.querySelector(".visibility-range").innerHTML = visibilityInKm + " km";
 
     if (data.weather[0].main == "Clouds") {
       weatherIcon.src = "images/clouds.png";
