@@ -2,10 +2,75 @@ const apiKey = "aa351def03ae96ae4d0d783e366257c0";
 const apiUrl =
   "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
 const defaultCity = "Kansas City";
+const apiUrl2 =
+  "http://api.openweathermap.org/data/2.5/air_pollution?lat=39.0997&lon=-94.5786&appid=aa351def03ae96ae4d0d783e366257c0";
+const apiUrl3 =
+  "http://api.openweathermap.org/data/2.5/forecast/daily?lat=39.0997&lon=-94.5786&cnt=7&appid=aa351def03ae96ae4d0d783e366257c0";
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
+
+async function fetchDayForecast() {
+  try {
+    const response = await fetch(apiUrl3);
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log(data);
+    } else {
+      console.log(
+        "Failed to retrieve Day Forecast data. Status code:",
+        response.status
+      );
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+fetchDayForecast();
+
+async function fetchAirPollution() {
+  const lat = 39.0997;
+  const lon = -94.5786;
+
+  try {
+    const response = await fetch(apiUrl2);
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log("Air Pollution Response:");
+      console.log("==========================");
+      console.log(data);
+
+      const aqi = data.list[0].main.aqi;
+
+      // Map AQI values to descriptions
+      const aqiDescriptions = {
+        1: "Good",
+        2: "Fair",
+        3: "Moderate",
+        4: "Poor",
+        5: "Very Poor",
+      };
+
+      // Set AQI description in HTML element
+      const aqiDescription = aqiDescriptions[aqi];
+      document.querySelector(".air-quality-description").innerHTML =
+        aqiDescription;
+    } else {
+      console.log(
+        "Failed to retrieve air pollution data. Status code:",
+        response.status
+      );
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+fetchAirPollution();
 
 async function checkWeather(city) {
   const response = await fetch(apiUrl + city + `&appid=${apiKey}`);

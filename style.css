@@ -288,3 +288,13 @@ html {
   top: 0; /* Initial position */
   left: 0; /* Initial position */
 }
+
+/*=====================Air Quality Box====================*/
+.air-quality-info {
+  text-align: center;
+}
+
+/*=====================Days============================*/
+.days {
+  background: var(--primary-gradient);
+}
