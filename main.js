@@ -5,7 +5,7 @@ const defaultCity = "Kansas City";
 const apiUrl2 =
   "http://api.openweathermap.org/data/2.5/air_pollution?lat=39.0997&lon=-94.5786&appid=aa351def03ae96ae4d0d783e366257c0";
 const apiUrl3 =
-  "http://api.openweathermap.org/data/2.5/forecast/daily?lat=39.0997&lon=-94.5786&cnt=7&appid=aa351def03ae96ae4d0d783e366257c0";
+  "http://api.openweathermap.org/data/2.5/forecast?lat=39.0997&lon=-94.5786&appid=aa351def03ae96ae4d0d783e366257c0";
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
@@ -17,6 +17,45 @@ async function fetchDayForecast() {
     const data = await response.json();
 
     if (response.ok) {
+      const tuesDay = document.querySelector(".tues");
+      const wedDay = document.querySelector(".wed");
+      const thurDay = document.querySelector(".thur");
+      const friDay = document.querySelector(".fri");
+      const satDay = document.querySelector(".sat");
+
+      document.querySelector(".tues").innerHTML = data.list[1].dt;
+      document.querySelector(".wed").innerHTML = data.list[9].dt;
+      document.querySelector(".thur").innerHTML = data.list[17].dt;
+      document.querySelector(".fri").innerHTML = data.list[25].dt;
+      document.querySelector(".sat").innerHTML = data.list[33].dt;
+
+      function getDayNameFromTimestamp(unixTimestamp) {
+        const milliseconds = unixTimestamp * 1000;
+
+        const date = new Date(milliseconds);
+        const dayOfWeek = date.getDay();
+        const dayNames = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+
+        return dayNames[dayOfWeek];
+      }
+      const unixTimestamp = 1711497600;
+      const dayName = getDayNameFromTimestamp(unixTimestamp);
+      console.log(dayName);
+
+      tuesDay.innerHTML = getDayNameFromTimestamp(data.list[1].dt);
+      wedDay.innerHTML = getDayNameFromTimestamp(data.list[9].dt);
+      thurDay.innerHTML = getDayNameFromTimestamp(data.list[17].dt);
+      friDay.innerHTML = getDayNameFromTimestamp(data.list[25].dt);
+      satDay.innerHTML = getDayNameFromTimestamp(data.list[33].dt);
+
       console.log(data);
     } else {
       console.log(
